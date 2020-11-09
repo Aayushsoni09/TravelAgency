@@ -16,7 +16,7 @@ def login(request):
 
         else:
             request.session['username'] = username
-            return render(request,'adminpanel/index.html')
+            return redirect('admin_index')
     else:
         return render(request,'adminpanel/adminlogin.html')
 
@@ -36,6 +36,18 @@ def signup(request):
 def admin_index(request):
     return render(request,'adminpanel/index.html')
 
+def rejectreq(request):
+    z = Op_request.objects.get(pk=request.GET['r'])
+    z.status = False
+    z.save()
+    return redirect('viewrequest')
+
+def acceptreq(request):
+    z = Op_request.objects.get(pk=request.GET['r'])
+    z.status = True
+    z.save()
+    return redirect('viewrequest')
+
 def viewrequest(request):
     request_list = Op_request.objects.filter(status=None)
     request_list_dic = {'request_list': request_list}
@@ -44,13 +56,12 @@ def viewrequest(request):
 def accepted(request):
     request_list = Op_request.objects.filter(status=True)
     request_list_dic = {'request_list': request_list}
-    return render(request, 'adminpanel/index.html', request_list_dic)
-
+    return render(request, 'adminpanel/acc_req.html', request_list_dic)
 
 def rejected(request):
     request_list = Op_request.objects.filter(status=False)
     request_list_dic = {'request_list': request_list}
-    return render(request, 'adminpanel/index.html', request_list_dic)
+    return render(request, 'adminpanel/rej_req.html', request_list_dic)
 
 def logout(request):
     del request.session['uid']

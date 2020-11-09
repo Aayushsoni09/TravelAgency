@@ -22,6 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('', views.home, name='portal-home'),
+    path('indexsubmit',views.indexsubmit, name='indexsubmit'),
     path('contact/',views.contact, name='portal-contact'),
     path('join_us/',views.join_us, name='portal-joinus'),
     path('join_us/join_us_submit',views.join_us_submit, name='join_us_submit'),

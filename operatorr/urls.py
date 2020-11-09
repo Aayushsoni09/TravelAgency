@@ -9,10 +9,12 @@ urlpatterns = [
      path('login',views.oplogin,name='oplogin'),
      path('index',views.opindex,name='opindex'),
      path('logout',views.oplogout,name='oplogout'),
-     path('addbus/',views.addbus,name='addbus'),
+     path('addbus',views.addbus,name='addbus'),
+     path('viewbus',views.viewbus,name='viewbus'),
     # path('find/',views.find,name='find'),
     # path('update',views.update,name='update'),
     # path('delete',views.delete,name='delete'),
     # path('logout',views.logout,name='logout'),
+
     # path('deletejob',views.deletejob,name='deletejob'),
 ]

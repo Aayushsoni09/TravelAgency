@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'travel.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'DB1',
+        'NAME': 'TravelPortal',
         'USER':'postgres',
         'PASSWORD':'4199',
         'HOST':'localhost'

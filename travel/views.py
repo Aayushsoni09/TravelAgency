@@ -1,15 +1,14 @@
 from django.shortcuts import render, redirect
 from user.models import Op_request
-
+from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
 
 
 def home(request):
-    if request.session.has_key('is_logged'):
-        return redirect('/user/sign_in/index')
-    # elif request.session.has_key('op_is_logged'):
-    #     return redirect('/operator/sign_in/index')
-    else:
-        return render(request,'travel/home.html')
+    if request.method == 'POST':
+
+        return  redirect('indexsubmit')
+    return render(request,'travel/index.html')
 
 def join_us(request):
     return render(request,'travel/join_us.html')
@@ -38,4 +37,15 @@ def join_us_submit(request):
     else:
         return render(request, 'travel/join_us.html')
 
+@csrf_exempt
+def indexsubmit(request):
+    if request.method == 'POST':
+        pass
+    source = request.POST.get('frome', False);
+    # destination = request.POST.get('to')
+    # type = request.POST.get('type')
+    # person = request.POST.get('person')
+    # date = request.POST.get('date')
+    print(source)
+    return render(request,'travel/index.html')
 
